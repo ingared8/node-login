@@ -1,11 +1,94 @@
 doctype html
 html
-	head
-		title Node.js Login
-		link(rel='stylesheet', href='/vendor/bootstrap.min.css')
-		link(rel='stylesheet', href='/css/style.css')
-		link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css')
-	body
+head
+title Node.js Login
+link(rel='stylesheet', href='/css/style.css')
+link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css')
+link(href='http://fonts.googleapis.com/css?family=Roboto:400,300,700', rel='stylesheet', type='text/css')
+link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+link(rel='stylesheet', type='text/css', href='/static/css/styles.css')
+link(href='/static/css/feeds.css', rel='stylesheet', media='screen')
+.container
+  .row.top-menu
+    .navbar-inner(onfocus='true')
+      ul.nav
+        a(href='/home')
+          span.glyphicon.glyphicon-home(aria-hidden='true')
+          | 				Home
+        a(href='/vc')
+          span.glyphicon(aria-hidden='true')
+          | 				VentureCapital
+        a(href='/acc')
+          span.glyphicon(aria-hidden='false')
+          | 				Accelarators
+        a(href='/stps')
+          span.glyphicon(aria-hidden='false')
+          | 				StartUps
+        a(href='/ngo')
+          span.glyphicon(aria-hidden='false')
+          | 				NGO
+        a(href='/health')
+          span.glyphicon(aria-hidden='false')
+          | 				Health and Wellness
+        a(href='/learn')
+          span.glyphicon(aria-hidden='true')
+          |                 Learning
+        a(href='/profile')
+          span.glyphicon(aria-hidden='false')
+          | 				Profile
+        a(href='/scst')
+          span.glyphicon(aria-hidden='false')
+          | 				Success Stories
+        a(href='/fashion')
+          span.glyphicon(aria-hidden='false')
+          | 				Fashion
+        a(href='/others')
+          span.glyphicon(aria-hidden='false')
+          | 				Others
+  .row.top.menu
+    .row.mini.banner.menu
+      .col-md-11.col-md-offset-1.padding-none
+        h1
+          | A modern womenpreneur
+          figure.creator
+            img(src='/static/images/profile4.png')
+            figcaption I'm the next suceess
+    .row.divider
+      .col-md-32
+    .flash
 
-		block content
-		block scripts
+  body
+    block content
+    block scripts
+   .row.divider
+     .col-md-32
+   #ft
+   span.arrow
+    a(href='#') Provider information/Impressum © Copyright 2016 Ganga Reddy.
+   span.arrow
+    a(href='#') Privacy policy
+   span
+    a(href='#')          
+   span.arrow(align='right')
+    a(href='#') Follow us
+    a(href='#')    
+    a(href='https://gitlab.com', target='_blank')
+      img(src='/static/images/gitlab.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+    a(href='https://github.com', target='_blank')
+      img(src='/static/images/gm.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+    a(href='https://www.linkedin.com/in', target='_blank')
+      img(src='/static/images/linkedin.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+    a(href='https://twitter.com', target='_blank')
+      img(src='/static/images/twitter.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+    a(href='https://angel.com', target='_blank')
+      img(src='/static/images/angellist.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+    a(href='https://plus.google.com')
+      img(src='/static/images/googlePlus.png', style='width:30px;height:30px', align='justify')
+    a(href='#')    
+   .row.divider
+  .col-md-32

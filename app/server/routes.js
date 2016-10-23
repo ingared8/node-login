@@ -2,11 +2,22 @@
 var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
+var path = require('path');
+var template  = require('swig');
+
+var vc1 = {'cname': 'ABC Ventures1', 'contact': 'abc@xyz.com', 'Funding Limit': '20000'};
+var vc2 = {'cname': 'ABC Ventures1', 'contact': 'abc@xyz.com', 'Funding Limit': '20000'};
+var vc3 = {'cname': 'ABC Ventures1', 'contact': 'abc@xyz.com', 'Funding Limit': '20000'};
 
 module.exports = function(app) {
 
+// main home page
+    app.get('/', function(req, res) {
+       res.render('welcome', {title: 'Welcome'});
+    });
+
 // main login page //
-	app.get('/', function(req, res){
+	app.get('/login', function(req, res){
 	// check if the user's credentials are saved in a cookie //
 		if (req.cookies.user == undefined || req.cookies.pass == undefined){
 			res.render('login', { title: 'Hello - Please Login To Your Account' });
@@ -23,7 +34,7 @@ module.exports = function(app) {
 		}
 	});
 	
-	app.post('/', function(req, res){
+	app.post('/login', function(req, res){
 		AM.manualLogin(req.body['user'], req.body['pass'], function(e, o){
 			if (!o){
 				res.status(400).send(e);
@@ -46,7 +57,7 @@ module.exports = function(app) {
 			res.redirect('/');
 		}	else{
 			res.render('home', {
-				title : 'Control Panel',
+				title : 'Home Page',
 				countries : CT,
 				udata : req.session.user
 			});
@@ -183,7 +194,28 @@ module.exports = function(app) {
 			res.redirect('/print');	
 		});
 	});
-	
-	app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
+
+    app.get('/groups', function(req, res){
+        res.render('groups.jade');
+    });
+
+    app.get('/vc', function(req, res) {
+        if (req.session.user == null){
+			res.redirect('/');
+		} else {
+		    res.redirect('vc', dict = vc1);
+		}
+    });
+
+    app.get('/main', function(req, res) {
+        res.sendFile(path.join(__dirname, '../public/html', 'main.html'));
+    });
+
+    app.get('/main2', function(){
+        var tmpl = swig.compileFile(path.join(__dirname, '../public/html', 'contacts.html'));
+        var out = tmpl({pagename: 'My Contacts', authors: ['Paul', 'Jim', 'Jane'] });
+    });
+
+    app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
 
 };

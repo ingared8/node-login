@@ -2,7 +2,7 @@
 /**
 	* Node.js Login Boilerplate
 	* More Info : http://kitchen.braitsch.io/building-a-login-system-in-node-js-and-mongodb/
-	* Copyright (c) 2013-2016 Stephen Braitsch
+	* Copyright (c) 2016 Ganga Reddy
 **/
 
 var http = require('http');
@@ -16,7 +16,7 @@ var MongoStore = require('connect-mongo')(session);
 var app = express();
 
 app.locals.pretty = true;
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3200);
 app.set('views', __dirname + '/app/server/views');
 app.set('view engine', 'jade');
 app.use(cookieParser());
@@ -29,7 +29,7 @@ app.use(express.static(__dirname + '/app/public'));
 
 var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'node-login';
+var dbName = process.env.DB_NAME || 'woomen';
 
 var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
 if (app.get('env') == 'live'){
@@ -50,4 +50,5 @@ require('./app/server/routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
+	console.log(__dirname);
 });
